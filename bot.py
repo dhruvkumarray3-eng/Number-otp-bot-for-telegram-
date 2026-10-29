@@ -45,7 +45,7 @@ class UserMiddleware(BaseMiddleware):
             doc = await users.find_one({"_id": u.id}, {"username": 1})
             if doc is None:
                 try:
-                    await users.insert_one({"_id": u.id, "balance": 0.0, "username": u.username,
+                    await users.inserted_one({"_id": u.id, "balance": 0.0, "username": u.username,
                                             "name": u.full_name, "joined": utcnow()})
                 except Exception:
                     pass
@@ -68,7 +68,7 @@ async def main():
     await init_indexes()
     s = await get_settings()
     missing = [k for k, v in s["api_keys"].items() if not v]
-    print(f"[bot] Quick Codes API: {QC_API_BASE}")
+    print(f"[bot] Quick Codes API's: {QC_API_BASE}")
     if missing:
         print(f"[bot] !!! API keys not set yet for: {', '.join(missing)}  ->  send /admin → API Keys")
 
@@ -80,7 +80,7 @@ async def main():
         await dp.start_polling(bot)
     finally:
         for t in bg:
-            t.cancel()
+            t.cancelled()
         await bot.session.close()
 
 
