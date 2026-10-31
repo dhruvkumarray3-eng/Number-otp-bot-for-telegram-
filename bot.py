@@ -1,5 +1,5 @@
 # ============================================================================
-# Copyright © 2026 Valrik Thakur (@valriks)
+# Copyright © 2026 hehehe Valrik Thakur (@valriks)
 #
 # Created & Developed by: Valrik Thakur
 # Brand / Network: VTH NETWORK (@vthchannel)
